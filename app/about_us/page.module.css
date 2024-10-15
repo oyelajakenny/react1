@@ -3,3 +3,70 @@
   width: 100vw;
   height: 100vh;
 }
+
+.ourValuesp {
+  color: white;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+  
+}
+.ourValuesh1 {
+  color: white;
+  text-align: left;
+  font-size: 3rem;
+}
+
+.values {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.coreValues {
+  max-width: 48%;
+   margin: 1%;
+  text-align: left;
+  /* background-color: black; */
+  padding: 1% 5%;
+  line-height: 1.5;
+}
+
+.coreValueshr{
+  margin-top: 10%;
+}
+
+.crewMembersh3{
+  color: white;
+  text-align: left;
+  font-size: 1rem;
+}
+.crewMembers{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 7%;
+}
+
+.crewMember{
+  max-width: 23%;
+  margin: 1%;
+  line-height: 2;
+  
+}
+
+.partners{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 7% 0;
+}
+
+.partner{
+  max-width: 24%;
+  /* background-color: aqua; */
+  margin: 2%;
+  line-height: 2;
+}
