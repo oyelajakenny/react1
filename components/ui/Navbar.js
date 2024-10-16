@@ -1,32 +1,59 @@
-"use client"
-import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link'
+"use client";
+import classNames from "classnames";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import Link from "next/link";
 
-import styles from './Navbar.module.css';
+import styles from "./Navbar.module.css";
 
-const navbarItems = [
-  {
-    title: 'ABOUT US',
-    link: '/about_us',
-  },
-  {
-    title: 'DESTINATION',
-    link: '/destination',
-  },
-  {
-    title: 'NASA COLLABORATION',
-    link: '/nasa_collaboration',
-  }
-];
+const NavItem = ({ title, link, isActive, onClick }) => {
+  return (
+    <li>
+      <a
+        href={link}
+        onClick={onClick}
+        style={{
+          color: isActive ? "grey" : "white",
+          textDecoration: isActive ? "underline" : "none",
+          padding: "10px",
+        }}
+      >
+        {title}
+      </a>
+    </li>
+  );
+};
+
+export default NavItem;
 
 export const Navbar = () => {
-  const currentPath = usePathname()
+  const [activeLink, setActiveLink] = useState();
+
+  const NavBarItems = [
+    {
+      title: "ABOUT US",
+      link: "/about_us",
+    },
+    {
+      title: "DESTINATION",
+      link: "/destination",
+    },
+    {
+      title: "NASA COLLABORATION",
+      link: "/nasa_collaboration",
+    },
+  ];
+
+  const handleNavClick = (link) => {
+    setActiveLink(link);
+  };
 
   return (
     <header className={styles.headerContainer}>
       <div className={styles.navbarLogo}>
-        <a href="/"><img src="/shared/logo.svg" alt="" /> GALACTICA</a>
+        <a href="/">
+          <img src="/shared/logo.svg" alt="" /> GALACTICA
+        </a>
       </div>
       <div className={styles.decorativeLine} />
       <nav className={styles.navbar}>
@@ -35,25 +62,19 @@ export const Navbar = () => {
           {/* TASK - React 1 week 2 */}
           {/* Create a <NavItem> component, which accepts the following:  */}
           {/* title, link, isActive  */}
-          <li className={classNames(styles.navbarLinks, {
-            [styles.isLinkActive]: navbarItems[0].link === currentPath,
-          })}>
-            <Link href={navbarItems[0].link}><b>01</b> {navbarItems[0].title}</Link>
-          </li>
-          <li className={classNames(styles.navbarLinks, {
-            [styles.isLinkActive]: navbarItems[1].link === currentPath,
-          })}>
-            <Link href={navbarItems[1].link}><b>02</b> {navbarItems[1].title}</Link>
-          </li>
-          <li className={classNames(styles.navbarLinks, {
-            [styles.isLinkActive]: navbarItems[2].link === currentPath,
-          })}>
-            <Link href={navbarItems[2].link}><b>03</b> NASA COLLABORATION</Link>
-          </li>
+          {NavBarItems.map((NavItems, index) => (
+            <NavItem
+              key={index}
+              title={NavItems.title}
+              link={NavItems.link}
+              isActive={activeLink === NavItems.link}
+              onClick={() => handleNavClick(NavItems.link)}
+            />
+          ))}
           {/* TASK - React 1 week 3 */}
           {/* replace repeating content by using navbarItems.map(() => <NavLink />) */}
         </ul>
       </nav>
     </header>
   );
-}
+};
