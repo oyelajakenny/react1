@@ -29,7 +29,7 @@ export default NavItem;
 export const Navbar = () => {
   const [activeLink, setActiveLink] = useState();
 
-  const NavBarItems = [
+  const navBarItems = [
     {
       title: "ABOUT US",
       link: "/about_us",
