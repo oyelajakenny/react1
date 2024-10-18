@@ -1,7 +1,7 @@
 import styles from "@/components/ui/Footer.module.css";
 import React from "react";
 
-const SocialLinks = ({ url, title, icon }) => {
+const SocialLink = ({ url, title, icon }) => {
   return (
     <li>
       <a href={url} target="_blank">
