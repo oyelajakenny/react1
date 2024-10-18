@@ -62,7 +62,7 @@ export const Navbar = () => {
           {/* TASK - React 1 week 2 */}
           {/* Create a <NavItem> component, which accepts the following:  */}
           {/* title, link, isActive  */}
-          {NavBarItems.map((NavItems, index) => (
+          {NavBarItems.map((navItems, index) => (
             <NavItem
               key={index}
               title={NavItems.title}
