@@ -66,7 +66,7 @@ export const Destinations = () => {
   let isPlanetSelected = false;
   let numberOfPlanets = selectedPlanets.length;
 
-  const onAddOrRemovePlanet = (name, index) => {
+  const onAddOrRemovePlanet = (name) => {
     setSelectedPlanets((prevSelectedPlanets) => {
       // Check if the planet is already selected
       if (!prevSelectedPlanets.includes(name)) {
