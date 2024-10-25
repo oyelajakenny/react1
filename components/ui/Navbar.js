@@ -5,31 +5,16 @@ import { useState } from "react";
 import Link from "next/link";
 
 import styles from "./Navbar.module.css";
+import NavLink from "./NavLink";
 
-const NavItem = ({ title, link, isActive, onClick }) => {
-  return (
-    <li>
-      <a
-        href={link}
-        onClick={onClick}
-        style={{
-          color: isActive ? "grey" : "white",
-          textDecoration: isActive ? "underline" : "none",
-          padding: "10px",
-        }}
-      >
-        {title}
-      </a>
-    </li>
-  );
-};
 
-export default NavItem;
 
 export const Navbar = () => {
-  const [activeLink, setActiveLink] = useState();
 
   const NavBarItems = [
+    { 
+      title: "HOME", 
+      link: "/", },
     {
       title: "ABOUT US",
       link: "/about_us",
@@ -44,9 +29,8 @@ export const Navbar = () => {
     },
   ];
 
-  const handleNavClick = (link) => {
-    setActiveLink(link);
-  };
+   const currentPath = usePathname();
+
 
   return (
     <header className={styles.headerContainer}>
@@ -62,13 +46,13 @@ export const Navbar = () => {
           {/* TASK - React 1 week 2 */}
           {/* Create a <NavItem> component, which accepts the following:  */}
           {/* title, link, isActive  */}
-          {NavBarItems.map((NavItems, index) => (
-            <NavItem
+          {NavBarItems.map((NavItem, index) => (
+            <NavLink
               key={index}
-              title={NavItems.title}
-              link={NavItems.link}
-              isActive={activeLink === NavItems.link}
-              onClick={() => handleNavClick(NavItems.link)}
+              title={NavItem.title}
+              link={NavItem.link}
+              isActive={currentPath === NavItem.link}
+             
             />
           ))}
           {/* TASK - React 1 week 3 */}
