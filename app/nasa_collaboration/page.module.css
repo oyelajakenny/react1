@@ -6,7 +6,10 @@
 
 
 .nasaPicOfTheDayImg {
-  width: auto;
-  height: 400px;
+  width: 50%;
+  
 
+}
+.Rovers{
+  display: flex;
 }
