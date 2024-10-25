@@ -8,6 +8,7 @@ import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 // TASK - React 1 week 2
 // Move this to its own file
 const PlanetWishlistItem = ({ name, onRemove, thumbnail }) => {
+
   return (
     <div className={styles.wishlistItem}>
       <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
@@ -16,3 +17,5 @@ const PlanetWishlistItem = ({ name, onRemove, thumbnail }) => {
     </div>
   );
 };
+
+export default PlanetWishlistItem;
