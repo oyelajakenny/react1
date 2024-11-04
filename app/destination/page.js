@@ -5,9 +5,7 @@ import { useState } from "react";
 import styles from "@/components/destination/destination.module.css";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 import PlanetWishlistItem from "@/components/destination/PlanetWishlistItem";
-import PlanetCard from "@/components/destination/PlanetCard"
- 
-
+import PlanetCard from "@/components/destination/PlanetCard";
 
 export const Destinations = () => {
   const planets = [
@@ -39,21 +37,21 @@ export const Destinations = () => {
   ];
   const [selectedPlanets, setSelectedPlanets] = useState([]);
 
-
   let numberOfPlanets = selectedPlanets.length;
 
   const onAddOrRemovePlanet = (name) => {
     setSelectedPlanets((prevSelectedPlanets) => {
       const planet = planets.find((p) => p.name === name);
+      const planetExists = prevSelectedPlanets.some((p) => p.name === name);
 
-      if (!prevSelectedPlanets.some((p) => p.name === name)) {
-        return [...prevSelectedPlanets, planet];
-      } else {
+      if (planetExists) {
         return prevSelectedPlanets.filter((planet) => planet.name !== name);
       }
+
+      return [...prevSelectedPlanets, planet];
     });
   };
- 
+
   const onAddWishlistItem = (planet) => {
     setSelectedPlanets((prevSelectedPlanets) => {
       if (prevSelectedPlanets.some((p) => p.name === planet.name)) {
@@ -127,4 +125,3 @@ export const Destinations = () => {
 };
 
 export default Destinations;
-
