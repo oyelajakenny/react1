@@ -31,6 +31,7 @@ const RoverPhoto =({src, date, roverName}) => {
 export const NasaCollaboration = () => {
   const [dailyImg, setDailyImg] = useState({});
   const [roverPhoto, setRoverPhoto] = useState({});
+  const [error, setError] =useState(false)
 
   useEffect(() => {
   
@@ -42,7 +43,9 @@ export const NasaCollaboration = () => {
         setRoverPhoto(roverPhotoResponse);
       } catch (error) {
         console.error("Error fetching Mars Rover photos:", error);
+        setError("There was an problem fetching images")
       }; 
+
     }
 const fetchDailyImg = async () => {
     try {
@@ -60,6 +63,9 @@ fetchDailyImg()
     // fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable
   }, []);
 
+  if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
