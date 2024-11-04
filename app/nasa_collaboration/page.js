@@ -1,16 +1,19 @@
 "use client";
-
+import dotenv from "dotenv";
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
-
+dotenv.config();
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
-const API_KEY = "nDgmi28bavvf27vTGSZ8JoPwd4BfLJtrJP6DKhgC";
+const API_KEY = process.env.API;
 
 const NASA_URLs = {
   astronomyPicOfTheDay: `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`,
   marsRoverPhoto: `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${API_KEY}`,
+  
+  
 };
+console.log(NASA_URLs);
 
 const RoverPhoto =({src, date, roverName}) => {
   return (
